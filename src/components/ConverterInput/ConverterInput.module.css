@@ -1,0 +1,24 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.calc__box {
+    display: flex;
+    flex-direction: column;
+    width: 368px;
+    margin-top:20px;
+    padding: 5px 15px;
+    padding-top: 20px;
+    border: 1px solid teal;
+}
+
+.myInput {
+    height: 80px;
+    margin-bottom: 20px;
+    font-size: 32px;
+    outline: none;
+    padding-left: 10px;
+    border: none;
+}

@@ -1,0 +1,15 @@
+.btn {
+    width: 80px;
+    padding: 5px 15px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    border:1px solid teal;
+}
+
+.active {
+    background: teal;;
+    color:white;
+}

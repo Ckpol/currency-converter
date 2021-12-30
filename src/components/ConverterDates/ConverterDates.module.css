@@ -1,0 +1,22 @@
+.dates__container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.dates__input {
+    padding: 5px 15px;
+    cursor: pointer;
+    border: 1px solid teal;
+}
+
+.dates__src {
+    width: 85px;
+    padding: 5px 15px;
+    text-align: center;
+    border: 1px solid teal;
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+}

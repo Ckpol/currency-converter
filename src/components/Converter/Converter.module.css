@@ -1,0 +1,13 @@
+.title {
+    font-size: 32px;
+    font-weight: 300;
+    margin-top: 15px;
+    padding-left: 15px;
+}
+
+.side {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 400px;
+}
