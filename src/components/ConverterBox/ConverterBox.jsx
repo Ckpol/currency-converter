@@ -21,6 +21,7 @@ const ConverterBox = () => {
     const [inRateInfo, outRateInfo] = useCreateRateInfo(fromCurrency, toCurrency, rate);
     const [fromAmount, toAmount] = getAmount(typeOfInOutConverter, amount, rate);
     const [dates, setDates] = useState(setCurrDates());
+    
 
     const onChangeFromAmountHandler = (elem) => {
         setTypeOfInOutConverter(true);
@@ -49,13 +50,16 @@ const ConverterBox = () => {
     })
 
    useEffect(() => {
-   fetchCurrencyList(); 
-   feetchExchangeRate(dates); 
+   //fetchCurrencyList(); 
+   //feetchExchangeRate(dates); 
+   //setPath(`${fromCurrency.toUpperCase()}_${toCurrency.toUpperCase()}`);
    }, []);
 
    useEffect(() => {
-   feetchExchangeRate(dates);
-   },[dates, fromCurrency, toCurrency])
+   //feetchExchangeRate(dates);
+   //setPath(`${fromCurrency.toUpperCase()}_${toCurrency.toUpperCase()}`);
+   },[dates, fromCurrency, toCurrency]);
+
 
     return (
         <div className='calc__box'>
