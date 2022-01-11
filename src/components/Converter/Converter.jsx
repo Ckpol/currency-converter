@@ -2,9 +2,8 @@ import React from 'react';
 import cl from './Converter.module.css';
 import ConverterSwitch from '../ConverterSwitch/ConverterSwitch.jsx';
 import ConverterInput from '../ConverterInput/Converterinput';
-import ConverterDates from '../ConverterDates/ConverterDates';
 
-const Converter = ({type, currency, currCurrency, setCurrCurrency, options, amount, setAmount, rate, setNewDates}) => {
+const Converter = ({type, currency, currCurrency, setCurrCurrency, options, amount, setAmount, rate, children, path}) => {
     return (
         <div className={cl.side}>
                 <h4 className={cl.title}>
@@ -18,6 +17,7 @@ const Converter = ({type, currency, currCurrency, setCurrCurrency, options, amou
                     currCurrency={currCurrency} 
                     setCurrCurrency={setCurrCurrency} 
                     options={options}
+                    path={path}
                 />
                 <ConverterInput
                     placeholder='0.0000'
@@ -26,9 +26,7 @@ const Converter = ({type, currency, currCurrency, setCurrCurrency, options, amou
                     rate={rate}
 
                 />
-                {type &&
-                <ConverterDates 
-                onChange={setNewDates}/>}
+                {children}
                 
 
             </div>

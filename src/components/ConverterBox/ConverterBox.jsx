@@ -6,7 +6,10 @@ import { useFetching } from '../../hooks/useFetching';
 import { getAmount } from '../../utils/amount';
 import { setCurrDates } from '../../utils/setCurrDates';
 import Converter from '../Converter/Converter';
+import ConverterDates from '../ConverterDates/ConverterDates';
 import cl from '../ConverterBox/ConverterBox.module.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const ConverterBox = () => {
     const [currency, setCurrency] = useState(['rub', 'eur', 'usd', 'gbp']);
@@ -21,6 +24,9 @@ const ConverterBox = () => {
     const [inRateInfo, outRateInfo] = useCreateRateInfo(fromCurrency, toCurrency, rate);
     const [fromAmount, toAmount] = getAmount(typeOfInOutConverter, amount, rate);
     const [dates, setDates] = useState(setCurrDates());
+    const path = `${fromCurrency.toUpperCase()}_${toCurrency.toUpperCase()}`;
+    let navigate = useNavigate();
+    
 
     const onChangeFromAmountHandler = (elem) => {
         setTypeOfInOutConverter(true);
@@ -50,12 +56,13 @@ const ConverterBox = () => {
 
    useEffect(() => {
    fetchCurrencyList(); 
-   feetchExchangeRate(dates); 
+   feetchExchangeRate(dates);     
    }, []);
 
    useEffect(() => {
    feetchExchangeRate(dates);
-   },[dates, fromCurrency, toCurrency])
+   navigate(`/${path}`);
+   },[dates, fromCurrency, toCurrency]);
 
     return (
         <div className='calc__box'>
@@ -68,8 +75,10 @@ const ConverterBox = () => {
                 amount={fromAmount}
                 setAmount={onChangeFromAmountHandler}
                 rate={inRateInfo}
-                setNewDates={onChangeDatesForConvert}
-            />
+                path={path}
+            >
+                <ConverterDates onChange={onChangeDatesForConvert}/>
+            </Converter>
             <Converter 
                 type={!typeOfInOutConverter} 
                 currency={changedToCurrency} 
@@ -79,7 +88,7 @@ const ConverterBox = () => {
                 amount={toAmount}
                 setAmount={onChangeToAmountHandler}
                 rate={outRateInfo}
-                setNewDates={onChangeDatesForConvert}
+                path={path}
             />
             {
             (errorCurrencyList || errorExchangeRate) &&
